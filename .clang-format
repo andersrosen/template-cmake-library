@@ -1,0 +1,18 @@
+BasedOnStyle: Mozilla
+AccessModifierOffset: 0
+AlignAfterOpenBracket: false
+AlignEscapedNewlinesLeft: true
+AlwaysBreakAfterReturnType: TopLevel
+BreakBeforeBraces: Attach
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+ColumnLimit: 0
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 0
+IndentCaseLabels: false
+NamespaceIndentation: None
+IndentWidth: 4
+ContinuationIndentWidth: 4
+PointerAlignment: Left
+
+
