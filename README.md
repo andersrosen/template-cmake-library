@@ -4,7 +4,8 @@ A template for libraries. This was inspired by https://jappieklooster.nl/using-g
 ## Usage
 
 ```
-git clone -r git@github.com:andersrosen/template-cmake-library new-project
+git clone --recurse-submodules git@github.com:andersrosen/template-cmake-library new-project
+cd new-project
 git remote add template git@github.com:andersrosen/template-cmake-library.git
 git remote set-url origin git@github.com:andersrosen/new-project.git
 ```
@@ -22,8 +23,8 @@ cmake -B build -DBUILD_SHARED_LIBS=ON ...other settings...
 To build and test:
 ```
 cmake --build build
-cd build && ctest # Terse output
-cd build && ctest --output-on-failure # Shows output from tests that fail 
+(cd build && ctest) # Terse output
+(cd build && ctest --output-on-failure) # Shows output from tests that fail 
 ```
 
 To install the project:
@@ -33,7 +34,7 @@ cmake --build build --target install
 
 To create a source package:
 ```
-cd build && cpack -C CPackSourceConfig.cmake
+(cd build && cpack --config CPackSourceConfig.cmake)
 ```
 
 Documentation is generated using doxygen. There are two custom doxygen commands
