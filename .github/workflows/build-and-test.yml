@@ -20,6 +20,10 @@ jobs:
         shell: bash
 
     steps:
+      - name: Install doxygen
+        if: ${{ matrix.os == 'ubuntu-20.04' }}
+        run: sudo apt-get update && sudo apt-get install -yq doxygen
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
