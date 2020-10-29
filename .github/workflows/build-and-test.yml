@@ -1,0 +1,41 @@
+name: Build and test
+
+on:
+  push:
+    branches: [ main ]
+
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    strategy: matrix
+        os: [ubuntu-20.04, macos-11.0, windows-latest]
+
+    runs-on: ${{matrix.os}}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: mkdir
+        run: mkdir build install
+
+      - name: Configure
+        run: cmake -B build -DCMAKE_INSTALL_PREFIX=../install
+
+      - name: Build
+        run: cmake --build build --target all
+
+      - name: Install
+        run: cmake --build build --target install
+
+      - name: Test
+        run: |
+          cd build
+          ctest --output-on-failure
+
+      - name: Create source package
+        run: |
+          cd build
+          cpack --config CPackSourceConfig.cmake
