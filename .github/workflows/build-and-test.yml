@@ -21,11 +21,11 @@ jobs:
         with:
           submodules: true
 
-      - name: Create build directory
-        run: mkdir build
-
       - name: Configure
-        run: cmake -B build -DCMAKE_INSTALL_PREFIX=../install
+        run: |
+          mkdir build
+          mkdir install
+          cmake -B build -DCMAKE_INSTALL_PREFIX=../install
 
       - name: Build
         run: cmake --build build --target all
