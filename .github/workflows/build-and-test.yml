@@ -21,8 +21,8 @@ jobs:
         with:
           submodules: true
 
-      - name: mkdir
-        run: mkdir build install
+      - name: Create build directory
+        run: mkdir build
 
       - name: Configure
         run: cmake -B build -DCMAKE_INSTALL_PREFIX=../install
@@ -33,12 +33,12 @@ jobs:
       - name: Install
         run: cmake --build build --target install
 
-      - name: Test
-        run: |
-          cd build
-          ctest --output-on-failure
-
       - name: Create source package
         run: |
           cd build
           cpack --config CPackSourceConfig.cmake
+
+      - name: Test
+        run: |
+          cd build
+          ctest --output-on-failure
