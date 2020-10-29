@@ -9,5 +9,6 @@ TEST_CASE("Basic functionality", "[basic]") {
 }
 
 TEST_CASE("Advanced functionality", "[advanced]") {
-    REQUIRE(1 == 0);
+    arosen::Template::MyVeryOwnClass myClass(1,8);
+    REQUIRE(myClass.sum() == 9);
 }
