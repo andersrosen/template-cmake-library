@@ -33,15 +33,17 @@ jobs:
       - name: Build
         run: cmake --build build
 
-      - name: Install
-        run: cmake --build build --target install
-
-      - name: Create source package
-        run: |
-          cd build
-          cpack --config CPackSourceConfig.cmake
-
       - name: Test
         run: |
           cd build
           ctest --output-on-failure
+
+      - name: Install
+        run: cmake --build build --target install
+
+      - name: Create source package
+        if: ${{ matrix.os == 'ubuntu-20.04' }}
+        run: |
+          cd build
+          cpack --config CPackSourceConfig.cmake
+
