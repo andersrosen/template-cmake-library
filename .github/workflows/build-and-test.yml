@@ -31,7 +31,7 @@ jobs:
           cmake -B build -DCMAKE_INSTALL_PREFIX=../install
 
       - name: Build
-        run: cmake --build build --target all
+        run: cmake --build build
 
       - name: Install
         run: cmake --build build --target install
