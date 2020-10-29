@@ -2,9 +2,9 @@
 A template for libraries. This was inspired by https://jappieklooster.nl/using-git-for-templates.html
 
 ## Build status
-[![Ubuntu Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/Ubuntu/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions)
-[![MacOS Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/MacOS/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions)
-[![Windows Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/Windows/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions)
+[![Ubuntu Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/Ubuntu/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions?query=workflow%3AUbuntu)
+[![MacOS Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/MacOS/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions?query=workflow%3AmacOS)
+[![Windows Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/Windows/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions?query=workflow%3AWindows)
 
 ## Usage
 
