@@ -19,11 +19,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
+          path: src
 
       - name: Configure
         run: |
           mkdir build install
-          cmake -B build -DCMAKE_INSTALL_PREFIX=../install
+          cmake -B build src -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/install
 
       - name: Build
         run: cmake --build build
@@ -40,3 +41,28 @@ jobs:
         run: |
           cd build
           cpack --config CPackSourceConfig.cmake
+
+      - name: Checkout gh-pages branch
+        if: ${{ github.event_name == 'push' }}
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Update documentation
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          rm -rf gh-pages/docs/main
+          mkdir -p gh-pages/docs/main
+          (cd install/share/doc/html && tar cf - *) | (cd gh-pages/docs/main && tar xf -)
+          (cd gh-pages && git ls-files --deleted -z) > deleted.list
+          (cd gh-pages && git ls-files --others --modified -z) > added.list
+          if [ -s deleted.list ]; then (cd gh-pages && xargs -0 git rm) < deleted.list; fi
+          if [ -s added.list ]; then (cd gh-pages && xargs -0 git add) < added.list; fi
+          cd gh-pages
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --local user.name "Github Ubuntu action"
+            git config --local user.email "noone@example.com"
+            git commit -m "Update API docs"
+            git push
+          fi
