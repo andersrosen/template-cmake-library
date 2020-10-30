@@ -1,5 +1,5 @@
 # template-cmake-library
-A template for libraries. This was inspired by https://jappieklooster.nl/using-git-for-templates.html
+A template for C++ libraries that are built with CMake. This was inspired by https://jappieklooster.nl/using-git-for-templates.html
 
 ## Build status
 [![Ubuntu Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/Ubuntu/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions?query=workflow%3AUbuntu)
