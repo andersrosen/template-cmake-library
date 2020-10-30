@@ -6,6 +6,11 @@ A template for C++ libraries that are built with CMake. This was inspired by htt
 [![MacOS Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/MacOS/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions?query=workflow%3AmacOS)
 [![Windows Actions Status](https://github.com/andersrosen/template-cmake-library/workflows/Windows/badge.svg)](https://github.com/andersrosen/template-cmake-library/actions?query=workflow%3AWindows)
 
+## Reference documentation
+
+[Bleeding edge](https://andersrosen.github.io/template-cmake-library/docs/main/index.html) (generated from the latest commit to main)<br>
+[Version 1.0](https://andersrosen.github.io/template-cmake-library/docs/v1.0/index.html)
+
 ## Usage
 
 ```
