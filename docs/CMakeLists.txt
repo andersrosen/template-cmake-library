@@ -1,7 +1,7 @@
-list(APPEND DOXYGEN_ALIASES "includeexample{1}=\\par Example\\n \\includelineno \\1 \\n")
-list(APPEND DOXYGEN_ALIASES "includeexample{2}=\\par Example\\n \\1 \\n \\includelineno \\2 \\n")
-list(APPEND DOXYGEN_ALIASES "includeexamplewithoutput{1}=\\par Example\\n \\includelineno \\1 \\n \\par Output \\n \\verbinclude \\1.output")
-list(APPEND DOXYGEN_ALIASES "includeexamplewithoutput{2}=\\par Example\\n \\1 \\n \\includelineno \\2 \\n \\par Output \\n \\includelineno \\1.output")
+list(APPEND DOXYGEN_ALIASES "includeexample{1}=\\par Example^^ \\includelineno \\1")
+list(APPEND DOXYGEN_ALIASES "includeexample{2}=\\par Example^^ \\1 \\n \\includelineno \\2")
+list(APPEND DOXYGEN_ALIASES "includeexamplewithoutput{1}=\\par Example^^ \\includelineno \\1 \\par Output^^ \\verbinclude \\1.output")
+list(APPEND DOXYGEN_ALIASES "includeexamplewithoutput{2}=\\par Example^^ \\1 \\n \\includelineno \\2 \\par Output^^ \\includelineno \\1.output")
 list(APPEND DOXYGEN_EXAMPLE_PATH "${CMAKE_CURRENT_BINARY_DIR}/examples")
 
 doxygen_add_docs(docs ${CMAKE_CURRENT_SOURCE_DIR}/../include ALL)
