@@ -21,10 +21,8 @@ jobs:
           submodules: true
           path: src
 
-      - name: Configure
-        run: |
-          mkdir build install
-          cmake -B build src -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/install
+      - name: Configure CMake
+        run: cmake -B build -S src -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/install
 
       - name: Build
         run: cmake --build build
@@ -37,32 +35,13 @@ jobs:
       - name: Install
         run: cmake --build build --target install
 
-      - name: Create source package
+      - name: Create docs tarball
         run: |
-          cd build
-          cpack --config CPackSourceConfig.cmake
+          cd install/share/doc/html
+          tar jcf $GITHUB_WORKSPACE/docs.tar.bz2 *
 
-      - name: Checkout gh-pages branch
-        if: ${{ github.event_name == 'push' }}
-        uses: actions/checkout@v2
+      - name: Upload docs tarball as artifact
+        uses: actions/upload-artifact@v2
         with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Update documentation
-        if: ${{ github.event_name == 'push' }}
-        run: |
-          rm -rf gh-pages/docs/main
-          mkdir -p gh-pages/docs/main
-          (cd install/share/doc/html && tar cf - *) | (cd gh-pages/docs/main && tar xf -)
-          (cd gh-pages && git ls-files --deleted -z) > deleted.list
-          (cd gh-pages && git ls-files --others --modified -z) > added.list
-          if [ -s deleted.list ]; then (cd gh-pages && xargs -0 git rm) < deleted.list; fi
-          if [ -s added.list ]; then (cd gh-pages && xargs -0 git add) < added.list; fi
-          cd gh-pages
-          if [ -n "$(git status --porcelain)" ]; then
-            git config --local user.name "Github Ubuntu action"
-            git config --local user.email "noone@example.com"
-            git commit -m "Update API docs"
-            git push
-          fi
+          name: docs.tar.bz2
+          path: docs.tar.bz2
