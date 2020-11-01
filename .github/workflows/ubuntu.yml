@@ -64,17 +64,16 @@ jobs:
           name: docs
           path: gh-pages/docs/main/
 
-      - name: Commit any changes
+      - name: Commit and push any changes
         run: |
           cd gh-pages
-          git ls-files --deleted -z > ../deleted.list
-          git ls-files --others --modified -z > ../added.list
-          if [ -s ../deleted.list ]; then xargs -0 git rm < ../deleted.list; fi
-          if [ -s ../added.list ]; then xargs -0 git add < ../added.list; fi
+          git ls-files --others --modified -z > ../modified_files.list
+          if [ -s ../modified_files.list ]; then xargs -0 -t git add < ../modified_files.list; fi
           if [ -n "$(git status --porcelain)" ]; then
             git config --local user.name "Github Ubuntu action"
             git config --local user.email "noone@example.com"
             git commit -m "Update API docs"
             git push
+          else
+            echo "There were no changes. No need to commit"
           fi
-
