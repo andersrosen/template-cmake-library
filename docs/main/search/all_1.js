@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sum_2',['sum',['../classarosen_1_1Template_1_1MyVeryOwnClassRenamed.html#a0279cfb96f28a6ff63ff31eb77f9cf92',1,'arosen::Template::MyVeryOwnClassRenamed']]]
+  ['sum_1',['sum',['../classarosen_1_1Template_1_1MyVeryOwnClass.html#a68606b4ef2538412402292cd60e1f52d',1,'arosen::Template::MyVeryOwnClass']]]
 ];
