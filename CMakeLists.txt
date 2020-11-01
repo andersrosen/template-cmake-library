@@ -53,6 +53,10 @@ target_sources(template PRIVATE
     src/template.cpp
 )
 
+target_compile_definitions(template
+    PUBLIC
+    $<BUILD_INTERFACE:BUILDING_TEMPLATE>)
+
 set_target_properties(template PROPERTIES
     VERSION ${PROJECT_VERSION} SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR}
 )

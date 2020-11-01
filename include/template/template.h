@@ -19,7 +19,7 @@
 
 #ifndef DECLSPEC
 #   if defined(__WIN32__) || defined(__WINRT__)
-#       ifdef BUILD_TEMPLATE
+#       ifdef BUILDING_TEMPLATE
 #           define DECLSPEC __declspec(dllexport)
 #       else
 #           define DECLSPEC __declspec(dllimport)
