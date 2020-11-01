@@ -1,21 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 
-include(GNUInstallDirs)
-
 # Find out if we're part of a bigger project
 set(MASTER_PROJECT OFF)
 if (NOT DEFINED PROJECT_NAME)
     set(MASTER_PROJECT ON)
 endif()
-
-# Settings
-set(TEMPLATE_PKGCONFIG_DIR "${CMAKE_INSTALL_DATADIR}/pkgconfig" CACHE PATH
-    "Installation directory for pkgconfig (.pc) files.")
-set(CMAKE_BUILD_TYPE Release CACHE STRING
-    "Choose the type of build, options are: None (CMAKE_CXX_FLAGS or CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.")
-option(TEMPLATE_ENABLE_INSTALL "Generate install target" ${MASTER_PROJECT})
-option(TEMPLATE_ENABLE_TESTS "Build tests" ${MASTER_PROJECT})
-option(TEMPLATE_ENABLE_DOCS "Generate documentation using Doxygen" ${MASTER_PROJECT})
 
 # Get version from the main header
 file(READ include/template/template.h template_h)
@@ -29,6 +18,17 @@ math(EXPR CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_3})
 
 project(template VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}" LANGUAGES CXX)
 message(STATUS "${PROJECT_NAME} version: ${PROJECT_VERSION}")
+
+include(GNUInstallDirs)
+
+# Settings
+set(TEMPLATE_PKGCONFIG_DIR "${CMAKE_INSTALL_DATADIR}/pkgconfig" CACHE PATH
+    "Installation directory for pkgconfig (.pc) files.")
+set(CMAKE_BUILD_TYPE Release CACHE STRING
+    "Choose the type of build, options are: None (CMAKE_CXX_FLAGS or CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.")
+option(TEMPLATE_ENABLE_INSTALL "Generate install target" ${MASTER_PROJECT})
+option(TEMPLATE_ENABLE_TESTS "Build tests" ${MASTER_PROJECT})
+option(TEMPLATE_ENABLE_DOCS "Generate documentation using Doxygen" ${MASTER_PROJECT})
 
 # CMake script include path
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
