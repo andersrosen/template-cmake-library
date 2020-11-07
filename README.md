@@ -9,7 +9,6 @@ A template for C++ libraries that are built with CMake. This was inspired by htt
 ## Reference documentation
 
 [Bleeding edge](https://andersrosen.github.io/template-cmake-library/docs/main/index.html) (generated from the latest commit to main)<br>
-[Version 1.0](https://andersrosen.github.io/template-cmake-library/docs/v1.0/index.html)
 
 ## Usage
 
